@@ -1,0 +1,11 @@
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+catboost_info/
+.streamlit/secrets.toml
+models/*.joblib
+models/*.json
+reports/*.csv
+reports/*.json
+
