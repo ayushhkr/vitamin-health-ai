@@ -18,6 +18,26 @@ python -m venv .venv
 .\.venv\Scripts\streamlit.exe run app.py
 ```
 
+## Streamlit experience and optional AI assistant
+
+The Streamlit app provides a quick estimate and a detailed analysis view with
+transparent lifestyle explanations, recommendations, and prediction-based
+what-if scenarios. All predictions, including the scenarios, use the saved
+pipeline through `src.predict`; they do not modify training or evaluation.
+
+The detailed view also includes an optional OpenAI chat assistant. Set its key
+in the process environment before starting Streamlit:
+
+```powershell
+$env:OPENAI_API_KEY = "your-key"
+.\.venv\Scripts\streamlit.exe run app.py
+```
+
+The key is never requested in the interface, stored in source code, or read
+from an `.env` file. If `OPENAI_API_KEY` is unavailable, the chat continues in
+offline, rule-based guidance mode. Responses are educational only and are not
+medical diagnoses or supplement prescriptions.
+
 Training makes an 80/20 held-out split, compares Linear Regression, Random Forest, XGBoost, and CatBoost with five-fold shuffled cross-validation on the training data, then saves:
 
 - `models/vitamin_d_pipeline.joblib` — best fully fitted preprocessing and model pipeline
